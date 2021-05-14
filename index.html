@@ -14,19 +14,51 @@
 
                 switch (choice) {
                     case 1:
-                        return "Rock";
+                        return "rock";
                     case 2:
-                        return "Paper";
+                        return "paper";
                     case 3:
-                        return "Scissors";
+                        return "scissors";
                 }
             }
 
-            // write a function that takes a player move
+            // write a function that takes a player move and plays a round
+            function playRound(playerMove, computerMove) {
+                let lowerMove = playerMove.toLowerCase();
 
+                if (lowerMove === computerMove) {
+                    return("Tie game. Play again!");
+                }
+
+                switch (lowerMove) {
+                    case "rock":
+                        if (computerMove === "scissors") {
+                            return("You win! Rock beats Scissors!");
+                        } else {
+                            return("You lose! Paper beats Rock!");
+                        }
+                        break;
+                    case "paper":
+                        if (computerMove === "rock") {
+                            return("You win! Paper beats Rock!");
+                        } else {
+                            return("You lose! Scissors beat Paper!");
+                        }
+                        break;
+                    case "scissors":
+                        if (computerMove === "paper") {
+                            return("You win! Scissors beat Paper!");
+                        } else {
+                            return("You lose! Rock beats Scissors!");
+                        }
+                        break;
+                    default:
+                        throw new Error("Not a valid argument to playRound. Please specify ");
+                }
+            }
             // Write a function that plays a game (combining above two functions):
 
-            console.log(computerPlay())
+            console.log(playRound("asldfjasldf", computerPlay()));
         </script>
     </body>
 </html>
