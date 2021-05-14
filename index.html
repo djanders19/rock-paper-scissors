@@ -8,7 +8,25 @@
 
     <body>
         <script>
-            
+            // Define a function computerPlay() which has the computer randomly make a move
+            function computerPlay() {
+                let choice = Math.ceil(Math.random() * 3);
+
+                switch (choice) {
+                    case 1:
+                        return "Rock";
+                    case 2:
+                        return "Paper";
+                    case 3:
+                        return "Scissors";
+                }
+            }
+
+            // write a function that takes a player move
+
+            // Write a function that plays a game (combining above two functions):
+
+            console.log(computerPlay())
         </script>
     </body>
 </html>
