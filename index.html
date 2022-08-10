@@ -4,100 +4,29 @@
     <head>
         <title>Rock-Paper-Scissors</title>
         <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-        <script>
-            // Define a function computerPlay() which has the computer randomly make a move
-            function computerPlay() {
-                let choice = Math.ceil(Math.random() * 3);
+        <section class="section">
+            <h1 class="title">Rock-Paper-Scissors</h1>
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        Rock
+                    </div>
+                    <div class="column">
+                        Paper
+                    </div>
+                    <div class="column">
+                        Scissors
+                    </div>
+                </div>
+            </div>
 
-                switch (choice) {
-                    case 1:
-                        return "rock";
-                    case 2:
-                        return "paper";
-                    case 3:
-                        return "scissors";
-                }
-            }
+        </section>
 
-            // write a function that takes a player move and plays a round
-            function playRound(playerMove, computerMove) {
-                let lowerMove = playerMove.toLowerCase();
-
-                if (lowerMove === computerMove) {
-                    return("Tie game. Play again!");
-                }
-
-                switch (lowerMove) {
-                    case "rock":
-                        if (computerMove === "scissors") {
-                            return("You win! Rock beats Scissors!");
-                        } else {
-                            return("You lose! Paper beats Rock!");
-                        }
-                        break;
-                    case "paper":
-                        if (computerMove === "rock") {
-                            return("You win! Paper beats Rock!");
-                        } else {
-                            return("You lose! Scissors beat Paper!");
-                        }
-                        break;
-                    case "scissors":
-                        if (computerMove === "paper") {
-                            return("You win! Scissors beat Paper!");
-                        } else {
-                            return("You lose! Rock beats Scissors!");
-                        }
-                        break;
-                    default:
-                        throw new Error("Not a valid argument to playRound. Please specify ");
-                }
-            }
-
-            // Write a function that plays a game (combining above two functions):
-            function game(numRounds) {
-                let playerWins = 0;
-                let computerWins = 0;
-                for (let i = 0; i < numRounds; i++) {
-                    let playerMove = prompt("Please enter a move (Rock, Paper or Scissors):");
-                    let computerMove = computerPlay();
-                    console.log("Player chose: " + playerMove);
-                    console.log("Computer chose: " + computerMove);
-
-                    try {
-                        let roundResult = playRound(playerMove, computerMove);
-                        console.log(roundResult);
-                        if (roundResult.startsWith("You win!")) {
-                            playerWins++;
-                        } else if (roundResult.startsWith("You lose")) {
-                            computerWins++;
-                        }
-                    } catch (e) {
-                        console.error(e);
-                    }
-                }
-                let roundCompare = "You won " 
-                    + playerWins 
-                    + " rounds. Computer won " 
-                    + computerWins 
-                    + " rounds";
-
-                if (computerWins === playerWins) {
-                    return("Tie game. " + roundCompare);
-                } 
-                
-                if (playerWins >= numRounds / 2 || playerWins === numRounds / 2) {
-                    return("You win! " + roundCompare);
-                }
-
-                return("Computer Wins. " + roundCompare);
-            }
-
-            let numRounds = parseInt(prompt("How many rounds would you like to play?"));
-            console.log(game(numRounds));
-        </script>
+        <script src="script.js"></script>
     </body>
 </html>
