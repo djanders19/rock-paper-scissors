@@ -34,22 +34,28 @@ class Model {
         switch (lowerMove) {
             case "rock":
                 if (computerMove === "scissors") {
+                    this.playerScore = this.playerScore + 1;
                     return (playerWin);
                 } else {
+                    this.compScore = this.compScore + 1;
                     return (compWin);
                 }
                 break;
             case "paper":
                 if (computerMove === "rock") {
+                    this.playerScore = this.playerScore + 1;
                     return (playerWin);
                 } else {
+                    this.compScore = this.compScore + 1;
                     return (compWin);
                 }
                 break;
             case "scissors":
                 if (computerMove === "paper") {
+                    this.playerScore = this.playerScore + 1;
                     return (playerWin);
                 } else {
+                    this.compScore = this.compScore + 1;
                     return (compWin);
                 }
                 break;
@@ -130,6 +136,9 @@ class Controller {
     constructor(model, view) {
         this.model = model
         this.view = view
+
+        // Display initial scores:
+        this.onScoreChange(this.model.playerScore, this.model.compScore);
     }
 
     // When rock/paper/scissor buttons clicked in view,
@@ -138,6 +147,25 @@ class Controller {
     // When model returns output from a round, update score
     // in view. To start with, don't worry about numrounds
     // or winning overall game, just keep track of the score
+    onScoreChange = (playerScore, compScore) => {
+        this.view.displayScores(playerScore, compScore);
+    }
+
+    // Event handlers:
+    handleRock = () => {
+        this.model.playRound('rock');
+        this.view.displayScores(this.model.playerScore, this.model.compScore);
+    }
+
+    handlePaper = () => {
+        this.model.playRound('paper');
+        this.view.displayScores(this.model.playerScore, this.model.compScore);
+    }
+
+    handleScissors = () => {
+        this.model.playRound('scissors');
+        this.view.displayScores(this.model.playerScore, this.model.compScore);
+    }
 }
 
 const app = new Controller(new Model(), new View())
