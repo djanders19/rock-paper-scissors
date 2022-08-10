@@ -10,17 +10,46 @@
 
     <body>
         <section class="section">
-            <h1 class="title">Rock-Paper-Scissors</h1>
             <div class="container">
                 <div class="columns">
-                    <div class="column">
-                        Rock
-                    </div>
-                    <div class="column">
-                        Paper
-                    </div>
-                    <div class="column">
-                        Scissors
+                    <!-- Make a container column that is half the size of the
+                    page and centered (offset one-quarter) -->
+                    <div class="column is-half is-offset-one-quarter">
+                        <!-- Store everything in a Bulma Card -->
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-title">
+                                    Rock-Paper-Scissors
+                                </p>
+                            </header>
+
+                            <!-- Card Content below. Need to have
+                            buttons for playing rock/paper/scissors,
+                            total score tracker, and some output displaying
+                            the computer's play. Also need to let user specify
+                            number of rounds to play -->
+                            <div class="card-content">
+                                <div class="content">
+                                    <label for="target" class="label is-larg is-inline">Playing to:</label>
+                                    <div class="select is-rounded">
+                                        <select name="target" id="numGames">
+                                            <option value="1">1</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <footer class="card-footer">
+                                <button id="pointForP1" class="is-primary button card-footer-item is-large">Rock
+                                    1</button>
+                                <button id="pointForP2" class="is-info button card-footer-item is-large">Paper
+                                    2</button>
+                                <button id="reset" class="is-danger button card-footer-item is-large">Scissors</button>
+                                <button id="reset" class="is-danger button card-footer-item is-large">Reset</button>
+    
+                            </footer>
+                        </div>
                     </div>
                 </div>
             </div>
