@@ -111,6 +111,31 @@ class View {
         return this.computerScore.textContent;
     }
 
+    // Event listeners:
+    bindRock(handler) {
+        this.rockButton.addEventListener('click', event => {
+            event.preventDefault()
+
+            handler();
+        })
+    }
+
+    bindPaper(handler) {
+        this.paperButton.addEventListener('click', event => {
+            event.preventDefault()
+
+            handler();
+        })
+    }
+
+    bindScissors(handler) {
+        this.scissorButton.addEventListener('click', event => {
+            event.preventDefault()
+
+            handler();
+        })
+    }
+
     // Create an element with an optional CSS class
     createElement(tag, className) {
         const element = document.createElement(tag)
@@ -139,6 +164,11 @@ class Controller {
 
         // Display initial scores:
         this.onScoreChange(this.model.playerScore, this.model.compScore);
+
+        // Add event listeners:
+        this.view.bindRock(this.handleRock);
+        this.view.bindPaper(this.handlePaper);
+        this.view.bindScissors(this.handleScissors);
     }
 
     // When rock/paper/scissor buttons clicked in view,
@@ -153,6 +183,7 @@ class Controller {
 
     // Event handlers:
     handleRock = () => {
+        console.log('firing rock handler')
         this.model.playRound('rock');
         this.view.displayScores(this.model.playerScore, this.model.compScore);
     }
