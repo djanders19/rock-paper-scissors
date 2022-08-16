@@ -78,11 +78,15 @@ class View {
         this.app.append(this.title);
 
         this.scores = this.createElement('div')
-        this.playerScore = this.createElement('h2');
-        this.computerScore = this.createElement('h2');
+        this.labelPlayerScore = this.createElement("h2");
+        this.labelPlayerScore.textContent = "Player score:"
+        this.playerScore = this.createElement('h3');
+        this.labelCompScore = this.createElement("h2");
+        this.labelCompScore.textContent = "Computer score:"
+        this.computerScore = this.createElement('h3');
         this.playerScore.textContent = '0';
         this.computerScore.textContent = '0';
-        this.scores.append(this.playerScore, this.computerScore);
+        this.scores.append(this.labelPlayerScore, this.playerScore, this.labelCompScore, this.computerScore);
         this.app.append(this.scores);
 
         // Create a form
